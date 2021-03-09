@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package common;
+
+option go_package=".;pb";
+
+import "google/api/annotations.proto";
+
+message NewBookRequest{
+  string name = 1;
+  int32 total = 2;
+}
+
+message NewBookResponse{
+  int64 id = 1;
+  int32 total = 2;
+}
+
+message BookResponse{
+  int64 id = 1;
+  string name = 2;
+  int32 total = 3;
+}
+
+service BookServices {
+  rpc CreateBook(NewBookRequest) returns (NewBookResponse) {
+    option (google.api.http) = {
+      post: "/*"
+      body: "*"
+    };
+  }
+}

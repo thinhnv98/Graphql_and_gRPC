@@ -1,0 +1,8 @@
+grpc-gen:
+	make -C grpc gen
+
+graph-gen:
+	go run github.com/99designs/gqlgen generate
+
+run:
+	go run main.go
